@@ -1,0 +1,41 @@
+---
+layout: layout
+pagination:
+  data: projects
+  size: 1
+  alias: category
+permalink: "/categories/{{ category.slug }}/index.html"
+---
+
+<div class="category-header">
+  <a href="/"><img src="/assets/buttons/back.png" alt="Back" class="nav-button"></a>
+  <img src="/assets/buttons/{{ category.category | slugify }}.png" alt="{{ category.category }} Header" class="category-title-img">
+  <a href="https://okhousecat.etsy.com" target="_blank"><img src="/assets/buttons/shop.png" alt="Shop" class="nav-button"></a>
+</div>
+
+{% assign special = "Gameboy,Meowsic,Laser Harps" | split: "," %}
+
+<div class="project-grid">
+  {% for project in category.projects %}
+    <div class="project-card">
+      {% if special contains category.category %}
+        <!-- Special categories: lightbox -->
+        <a href="/assets/{{ category.category | specialImages }}/{{ project.gif }}" data-lightbox="{{ category.category | slugify }}">
+          <img src="/assets/{{ category.category | specialImages }}/{{ project.gif }}" alt="{{ project.title }}">
+        </a>
+    {% else %}
+  <!-- All others: link to project page -->
+  <a href="{{ project.link }}">
+    <img src="/assets/{{ category.category | specialImages }}/{{ project.gif }}" alt="{{ project.title }}">
+    {% unless project.gif contains "/gifs/" or project.gif contains "gifs\\" %}
+      <!-- no title for root-level images -->
+    {% else %}
+      <div class="project-title">{{ project.title }}</div>
+    {% endunless %}
+  </a>
+{% endif %}
+
+    </div>
+  {% endfor %}
+</div>
+

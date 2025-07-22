@@ -1,0 +1,15 @@
+{
+  "name": "okhousecat-archive",
+  "version": "1.0.0",
+  "description": "Automated project archive for okhousecat.com",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.0"
+  }
+}

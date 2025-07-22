@@ -1,0 +1,76 @@
+body {
+  font-family: sans-serif;
+  background: #fff;
+  color: #000;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.images img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.youtube {
+  margin-bottom: 2rem;
+}
+
+/* NEW: Grid for full project list */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Each project block */
+.project-card {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.project-card img:hover {
+  transform: scale(1.03);
+}
+
+.project-title {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.project-grid.category-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.special-thumb {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  display: block;
+}
+
