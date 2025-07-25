@@ -5,7 +5,7 @@
         {% if project.gif contains '/' %}
           <img src="/assets/{{ project.gif }}" alt="{{ project.title }}">
         {% else %}
-          <img src="/assets/{{ project.category }}/{{ project.gif }}" alt="{{ project.title }}">
+          <img src="/assets/{{ project.category | specialImages }}/{{ project.gif }}" alt="{{ project.title }}">
         {% endif %}
       </a>
       <div class="project-title">{{ project.title }}</div>
