@@ -1,20 +1,30 @@
 ---
 layout: layout
-title: Full List
+title: All Projects
 permalink: /categories/fulllist/
 ---
 
-<h1>All Projects</h1>
+<div class="category-header">
+  <a href="/"><img src="/assets/buttons/back.png" alt="Back" class="nav-button"></a>
+  <img src="/assets/buttons/full-archive.png" alt="Full Archive Header" class="category-title-img">
+  <a href="https://okhousecat.etsy.com" target="_blank"><img src="/assets/buttons/shop.png" alt="Shop" class="nav-button"></a>
+</div>
 
 <div class="project-grid full-list-grid">
+  {% assign ignore = "buttons,categories,backgrounds" | split: "," %}
+
   {% for project in collections.projects %}
-    <div class="project-card">
-      <a href="/projects/{{ project.slug }}/">
-        {% if project.gif %}
-          <img src="/assets/{{ project.category }}/{{ project.name }}/gifs/{{ project.gif }}" alt="{{ project.title }}">
-        {% endif %}
-        <div class="project-title">{{ project.title }}</div>
-      </a>
-    </div>
+    {% unless ignore contains project.category | specialImages %}
+      {% if project.gif %}
+        <div class="project-card">
+          <a href="{{ project.link }}">
+            <img src="/assets/{{ project.category | specialImages }}/{{ project.gif }}" alt="{{ project.title }}">
+            {% if project.gif contains "/gifs/" or project.gif contains "gifs\\" %}
+              <div class="project-title">{{ project.title }}</div>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    {% endunless %}
   {% endfor %}
 </div>
